@@ -33,7 +33,7 @@ function CardButton({ onClick }: CardButtonProps) {
   };
 
  return (
-  <ButtonCard onClick={handleButtonClick}>
+  <ButtonCard>
     <IconeButton src="/icons/Comprar.png"></IconeButton>
     <TextoButton>Comprar</TextoButton>
   </ButtonCard>
