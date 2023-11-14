@@ -46,7 +46,13 @@ interface CardProps {
   brand: string;
   description: string;
   price: string;
-  onAddToCart: (product: { imageURL: string; name: string; brand: string; price: string }) => void;
+  onAddToCart: (product: {
+    imageURL: string;
+    name: string;
+    brand: string;
+    description: string;
+    price: string;
+  }) => void;
 }
 
 const Card: React.FC<CardProps> = ({ imageURL, name, brand, description, price, onAddToCart }) => {
@@ -60,7 +66,7 @@ const Card: React.FC<CardProps> = ({ imageURL, name, brand, description, price, 
         </NomeEPreco>
         <CardDesc descricao={description} />
       </TextoContainer>
-      <CardButton onClick={() => onAddToCart({ imageURL, name, brand, price })} />
+      <CardButton onClick={() => onAddToCart({ imageURL, name, brand, description, price })} />
     </ContainerCard>
   );
 };

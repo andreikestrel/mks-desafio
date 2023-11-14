@@ -1,4 +1,3 @@
-
 import Card from "../card";
 import styled from "styled-components";
 import { useFetchProducts, ApiResponse } from "../../hooks/useProducts";
@@ -14,12 +13,31 @@ const Container = styled.div`
  gap: 30px;
 `;
 
-function Cards() {
- const { data } = useFetchProducts<ApiResponse>();
+interface CardProps {
+  imageURL: string;
+  name: string;
+  brand: string;
+  description: string;
+  price: string;
+}
 
- const products = data?.products || [];
+type CardsProps = {
+  onAddToCart: (product: {
+    imageURL: string;
+    name: string;
+    brand: string;
+    description: string;
+    price: string;
+  }) => void;
+};
 
- return (
+
+const Cards: React.FC<CardsProps> = ({ onAddToCart }) => {
+  const { data } = useFetchProducts<ApiResponse>();
+
+  const products = data?.products || [];
+
+  return (
     <Container>
       {products.map((product) => (
         <Card
@@ -29,11 +47,11 @@ function Cards() {
           brand={product.brand}
           description={product.description}
           price={`R$ ${product.price}`}
-          onAddToCart={() => console.log('Adicionar ao carrinho')}
+          onAddToCart={onAddToCart}
         />
       ))}
     </Container>
- );
+  );
 }
 
 export default Cards;
