@@ -1,4 +1,3 @@
-// src/components/card/index.tsx
 import styled from "styled-components";
 import ImgCard from "../card-components/imgCard";
 import CardButton from "../card-components/cardButton";

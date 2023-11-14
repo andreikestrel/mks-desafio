@@ -1,4 +1,4 @@
-// mks-desafio/src/components/cardsCarrinho/index.tsx
+
 import styled from "styled-components";
 import CardCarrinho from "../carrinhoComponents/cardCarrinho";
 import { useState } from "react";
@@ -11,7 +11,6 @@ const Container = styled.div`
   height: 80%;
 `;
 
-// Atualize o CardsCarrinho
 function CardsCarrinho() {
   const [cartItems, setCartItems] = useState<Array<{
     imageURL: string;

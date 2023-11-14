@@ -24,7 +24,6 @@ interface CardCarrinhoProps {
 }
 function CardCarrinho({ imageURL, name, brand, price }: CardCarrinhoProps) {
   const handleQuantidadeChange = (quantidade: number) => {
-    // Faça o que for necessário com a quantidade atualizada
     console.log("Quantidade atualizada:", quantidade);
   }
   return (
