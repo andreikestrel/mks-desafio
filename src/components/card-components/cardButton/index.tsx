@@ -28,8 +28,8 @@ interface CardButtonProps {
  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 function CardButton({ onClick }: CardButtonProps) {
-  const handleButtonClick = () => {
-    onClick();
+  const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+     onClick(event);
   };
 
  return (
