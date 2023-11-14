@@ -1,0 +1,83 @@
+import { useFetchProducts } from '../../hooks/useProducts';
+import styled from "styled-components";
+import ImgCard from "../card-components/imgCard";
+import CardButton from "../card-components/cardButton";
+import CardDesc from "../card-components/cardDesc";
+import NomeProduto from "../card-components/nomeProduto";
+import Preco from "../card-components/preco";
+
+
+const ContainerCard = styled.div`
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+ align-items: center;
+ background-color: #ffffff;
+ width: 218px;
+ height: 360px;
+ border-radius: 8px;
+ box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.14);
+`;
+
+const TextoContainer = styled.div`
+ display: flex;
+ flex-direction: column;
+ gap: 2px;
+ min-height: 100px;
+ max-height: 120px;
+ box-sizing: border-box;
+ align-items: flex-start;
+ width: 100%;
+ padding: 0px 10px;
+ margin-bottom: 18px;
+`;
+
+const NomeEPreco = styled.div`
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: flex-start;
+ margin-bottom: 10px;
+ width: 100%;
+`;
+
+interface Product {
+    id: number;
+    name: string;
+    brand: string;
+    description: string;
+    price: number;
+   }
+   
+   interface ApiResponse {
+    products: Product[];
+    count: number;
+    page: number;
+    total_pages: number;
+   }
+   
+   const Card: React.FC = () => {
+    const { data } = useFetchProducts<ApiResponse>();
+    const products = data?.products;
+   
+    return (
+      <>
+        {products &&
+          products.map((product) => (
+            <ContainerCard key={product.id}>
+              <ImgCard imageURL={product.photo}/>
+              <TextoContainer>
+                <NomeEPreco>
+                  <NomeProduto nome={product.name} marca={product.brand} />
+                  <Preco preco={`R$ ${product.price}`} />
+                </NomeEPreco>
+                <CardDesc descricao={product.description} />
+              </TextoContainer>
+              <CardButton />
+            </ContainerCard>
+          ))}
+      </>
+    );
+   };
+   
+   export default Card;
