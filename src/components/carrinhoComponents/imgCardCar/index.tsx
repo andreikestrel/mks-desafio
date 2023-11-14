@@ -10,11 +10,15 @@ const ImageCard = styled.img`
   height: 100%;
   object-fit: contain;
 `;
+interface ImgCardCarProps {
+  imageURL: string;
+  alt: string;
+}
 
-function ImgCardCar({ imageURL }: { imageURL: string }) {
+function ImgCardCar({ imageURL, alt }: ImgCardCarProps) {
   return (
     <ImageContainer>
-      <ImageCard src={imageURL} alt="Image" />
+      <ImageCard src={imageURL} alt={alt} />
     </ImageContainer>
   );
 }

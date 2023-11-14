@@ -16,17 +16,23 @@ const Container = styled.div`
   height: 100px;
 `;
 
-function CardCarrinho() {
+interface CardCarrinhoProps {
+  imageURL: string;
+  name: string;
+  brand: string;
+  price: string;
+}
+function CardCarrinho({ imageURL, name, brand, price }: CardCarrinhoProps) {
   const handleQuantidadeChange = (quantidade: number) => {
     // Faça o que for necessário com a quantidade atualizada
     console.log("Quantidade atualizada:", quantidade);
   }
   return (
     <Container>
-      <ImgCardCar imageURL="/icons/default-image.png" />
-      <NomeProduto nome="Nome do Produto" marca="Marca" />
+      <ImgCardCar imageURL={imageURL} alt={name} />
+      <NomeProduto nome={name} marca={brand} />
       <InputQuantidade onQuantidadeChange={handleQuantidadeChange} />
-      <PrecoCar preco="R$ 00,00" />
+      <PrecoCar preco={price} />
     </Container>
   );
 }
